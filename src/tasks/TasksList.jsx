@@ -1,36 +1,31 @@
 import "./tasks.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TasksList = ({ data, deleteTaskFun, compleatTaskFun }) => {
   return (
-    <div className="container">
-      <h1>hello TasksList</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((task) => {
-            return (
-              <tr key={task.id}>
-                <td className={task.isFinshed ? "finshed" : ""}>
-                  {" "}
-                  {task.value}
-                </td>
-                <td>
-                  <button onClick={() => deleteTaskFun(task.value)}>x</button>
-                  <button onClick={() => compleatTaskFun(task.id)}>
-                    compleat
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {data.map((task) => {
+        return (
+          <div key={task.id} className="Todo ">
+            <p className={task.isFinshed ? "finshed" : ""}>{task.value}</p>
+            <div>
+              <FontAwesomeIcon
+                className="edit-icon"
+                icon={faPenToSquare}
+                onClick={() => compleatTaskFun(task.id)}
+              />
+              <FontAwesomeIcon
+                className="delete-icon"
+                icon={faTrash}
+                onClick={() => deleteTaskFun(task.value)}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 };
 

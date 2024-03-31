@@ -25,14 +25,14 @@ const Todo = () => {
     );
   };
   return (
-    <>
+    <div className="TodoWrapper">
       <Form addTaskFun={addTaskHandler}></Form>
       <TasksList
         data={tasks}
         deleteTaskFun={deleteTaskHandler}
         compleatTaskFun={compleatTaskHandler}
       ></TasksList>
-    </>
+    </div>
   );
 };
 
