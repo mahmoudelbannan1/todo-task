@@ -1,17 +1,11 @@
-// import { useState } from "react";
+import { useState } from "react";
 
-const Form = (props) => {
-  console.log(props);
-  const { addTaskFun } = props;
-  // const [tasks, setTasks] = useState([]);
-  let inputValue;
+const Form = ({ addTaskFun }) => {
+  const [task, setTask] = useState("");
+
   const changeInputHandler = (e) => {
-    inputValue = e.target.value;
+    setTask(e.target.value);
   };
-  // const addTaskHandler = () => {
-  //   setTasks([...tasks, { value: inputValue, isFinshed: false }]);
-  //   // tasks.push({ value: inputValue, isFinshed: false });
-  // };
   return (
     <>
       <div className="container">
@@ -20,7 +14,10 @@ const Form = (props) => {
             className="btn btn-outline-secondary"
             type="button"
             id="button-addon1"
-            onClick={() => addTaskFun(inputValue)}
+            onClick={() => {
+              addTaskFun(task);
+              setTask("");
+            }}
           >
             Add Task
           </button>
@@ -31,12 +28,9 @@ const Form = (props) => {
             aria-label="Example text with button addon"
             aria-describedby="button-addon1"
             onChange={changeInputHandler}
+            value={task}
           />
         </div>
-        {/* 
-        {tasks.map((task) => {
-          return <p>{task.value}</p>;
-        })} */}
       </div>
     </>
   );
