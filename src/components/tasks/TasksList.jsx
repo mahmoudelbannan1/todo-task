@@ -19,7 +19,7 @@ const TasksList = ({ data, deleteTaskFun, compleatTaskFun }) => {
               <FontAwesomeIcon
                 className="delete-icon"
                 icon={faTrash}
-                onClick={() => deleteTaskFun(task.value)}
+                onClick={() => deleteTaskFun(task.id)}
               />
             </div>
           </div>

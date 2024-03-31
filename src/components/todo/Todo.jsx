@@ -12,8 +12,8 @@ const Todo = () => {
     setTasks([...tasks, { value: inputValue, id: uuidv4(), isFinshed: false }]);
   };
 
-  const deleteTaskHandler = (task) => {
-    const newTasks = tasks.filter((t) => t.value !== task);
+  const deleteTaskHandler = (id) => {
+    const newTasks = tasks.filter((t) => t.id !== id);
     setTasks(newTasks);
   };
 
